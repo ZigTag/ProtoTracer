@@ -39,11 +39,15 @@ public:
 		if(error == 0){// SSD1306 Found
             didBegin = apds.begin();
 
+            Serial.print("Booted");
+
             //apds.setLED(APDS9960_LEDDRIVE_12MA, APDS9960_LEDBOOST_100PCNT);
             //apds.setProxGain(APDS9960_PGAIN_1X);
         }
         else {
             didBegin = false;
+            Serial.print("Did Not Boot\n");
+            Serial.printf("%i\n", error);
         }
 
         return didBegin;

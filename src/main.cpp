@@ -3,10 +3,10 @@
 //#define BETAWS35
 //#define GAMMAFRONT
 //#define GAMMABACK
-//#define HUB75
+#define HUB75
 //#define HUB75Split
 //#define HUB75Square
-#define WS35
+//#define WS35
 //#define WS35SPLIT
 //#define ESP32HUB75
 //#define CUSTOMHUB75
@@ -15,11 +15,11 @@
 
 //#define PRINTINFO
 
-#define NEOTRELLISMENU
+//#define NEOTRELLISMENU
 
 #include <Arduino.h>
 
-uint8_t maxBrightness = 50;
+uint8_t maxBrightness = 40;
 uint8_t maxAccentBrightness = 50;
 
 #ifdef ALPHARIGHT
@@ -107,7 +107,7 @@ TamamoAnimation animation = TamamoAnimation();
 
 //--------------- CONTROLLERS ---------------
 //#include "Controllers\KaiborgV1Controller.h"
-#include "Controllers\KaiborgV1D1Controller.h"
+//#include "Controllers\KaiborgV1D1Controller.h"
 //#include "Controllers\ProtoDRController.h"
 //#include "Controllers\SmartMatrixHUB75.h"
 //#include "Controllers\SmartMatrixHUB75Split.h"

@@ -70,7 +70,7 @@ private:
     }
 
 public:
-    ProtogenHUB75() : ProtogenAnimation(Vector2D(), Vector2D(192.0f, 96.0f), 22, 23, 9){
+    ProtogenHUB75() : ProtogenAnimation(Vector2D(), Vector2D(192.0f, 96.0f), A0, 20, 9){
         scene.AddObject(pM.GetObject());
         scene.AddObject(deltaDisplayBackground.GetObject());
 
@@ -114,7 +114,7 @@ public:
 
         AlignObject(pM.GetObject(), -7.5f);
 
-        SetWiggleSpeed(5.0f);
+        SetWiggleSpeed(1.0f);
         SetMenuWiggleSpeed(0.0f, 0.0f, 0.0f);
         SetMenuOffset(Vector2D(17.5f, -3.0f));
         SetMenuSize(Vector2D(192, 56));

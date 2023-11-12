@@ -57,7 +57,7 @@ private:
     SimpleMaterial yellowMaterial = SimpleMaterial(RGBColor(255, 255, 0));
     SimpleMaterial purpleMaterial = SimpleMaterial(RGBColor(255, 0, 255));
     
-    RGBColor gradientSpectrum[2] = {RGBColor(255, 0, 0), RGBColor(255, 0, 0)};
+    RGBColor gradientSpectrum[2] = {RGBColor(64, 0, 128), RGBColor(0, 255, 255)};
     GradientMaterial<2> gradientMat = GradientMaterial<2>(gradientSpectrum, 350.0f, false);
     
     MaterialAnimator<11> materialAnimator;
@@ -270,7 +270,7 @@ protected:
     }
 
     void AddViseme(Viseme::MouthShape visemeName, float* parameter){
-        eEA.AddParameter(parameter, visemeName + 100, 2, 0.0f, 1.0f);
+        eEA.AddParameter(parameter, visemeName + 100, 10, 0.0f, 1.0f);
 
         eEA.SetInterpolationMethod(visemeName + 100, EasyEaseInterpolation::Linear);
     }
@@ -429,7 +429,7 @@ public:
     }
 
     void Initialize() override {
-        boop.Initialize(5);
+        boop.Initialize(200);
 
         hud.Initialize();
 
