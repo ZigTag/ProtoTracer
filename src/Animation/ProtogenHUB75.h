@@ -106,20 +106,39 @@ public:
             else {
                 SpectrumAnalyzerFace();
             }
+            if (mode < 6) {
+                pM.GetObject()->Enable();
+            } else {
+                pM.GetObject()->Disable();
+            }
         }
 
         UpdateFace(ratio);
 
         pM.Update();
 
-        AlignObject(pM.GetObject(), -7.5f);
+        //AlignObject(pM.GetObject(), -7.5f);
+
+        //Vector3D pos = pM.GetObject()->GetCenterOffset();
+        //Vector3D scale = pM.GetObject()->GetTransform()->GetScale();
+        //Quaternion rot = pM.GetObject()->GetTransform()->GetRotation();
+
+
+        //Serial.printf("pos final: %f %f %f\r", pos.X, pos.Y, pos.Z);
+        //Serial.printf("scale: %f %f %f\r", scale.X, scale.Y, scale.Z);
+        //Serial.printf("rot: %f %f %f %f\r", rot.W, rot.X, rot.Y, rot.Z);
+
+
+        //Aligned Center: 104.613388 53.709869 249.163986165817
 
         SetWiggleSpeed(1.0f);
         SetMenuWiggleSpeed(0.0f, 0.0f, 0.0f);
         SetMenuOffset(Vector2D(17.5f, -3.0f));
         SetMenuSize(Vector2D(192, 56));
         
-        pM.GetObject()->GetTransform()->SetPosition(GetWiggleOffset());
+        pM.GetObject()->GetTransform()->SetScale(Vector3D(-1.1, 0.55, 1));
+        pM.GetObject()->GetTransform()->SetPosition(Vector3D(135, -10, 250) + GetWiggleOffset());
+        //pM.GetObject()->GetTransform()->SetPosition();
         pM.GetObject()->UpdateTransform();
     }
 };

@@ -57,7 +57,7 @@ private:
     SimpleMaterial yellowMaterial = SimpleMaterial(RGBColor(255, 255, 0));
     SimpleMaterial purpleMaterial = SimpleMaterial(RGBColor(255, 0, 255));
     
-    RGBColor gradientSpectrum[2] = {RGBColor(64, 0, 128), RGBColor(0, 255, 255)};
+    RGBColor gradientSpectrum[2] = {RGBColor(255, 0, 0), RGBColor(255, 0, 0)};
     GradientMaterial<2> gradientMat = GradientMaterial<2>(gradientSpectrum, 350.0f, false);
     
     MaterialAnimator<11> materialAnimator;
@@ -108,7 +108,7 @@ private:
         materialAnimator.AddMaterial(Material::Replace, &redMaterial, 40, 0.0f, 1.0f);//layer 6
         materialAnimator.AddMaterial(Material::Replace, &blueMaterial, 40, 0.0f, 1.0f);//layer 7
         materialAnimator.AddMaterial(Material::Replace, &flowNoise, 40, 0.15f, 1.0f);//layer 8
-        materialAnimator.AddMaterial(Material::Replace, &rainbowSpiral, 40, 0.0f, 1.0f);//layer 9
+        materialAnimator.AddMaterial(Material::Replace, &gradientMat, 40, 0.0f, 1.0f);//layer 9
 
         backgroundMaterial.SetBaseMaterial(Material::Add, Menu::GetMaterial());
         backgroundMaterial.AddMaterial(Material::Add, &sA, 20, 0.0f, 1.0f);
@@ -146,7 +146,7 @@ private:
             case 5: materialAnimator.AddMaterialFrame(purpleMaterial, 0.8f); break;
             case 6: materialAnimator.AddMaterialFrame(redMaterial, 0.8f); break;
             case 7: materialAnimator.AddMaterialFrame(blueMaterial, 0.8f); break;
-            case 8: materialAnimator.AddMaterialFrame(rainbowSpiral, 0.8f); break;
+            case 8: materialAnimator.AddMaterialFrame(gradientMat, 0.8f); break;
             case 9: materialAnimator.AddMaterialFrame(flowNoise, 0.8f); break;
             default: break;
         }
@@ -203,8 +203,8 @@ protected:
         oSC.SetHueAngle(ratio * 360.0f * 8.0f);
         
         SetMaterialColor();
-        RGBColor hueFront = RGBColor(255, 0, 0).HueShift(Menu::GetHueF() * 36);
-        RGBColor hueBack  = RGBColor(255, 0, 0).HueShift(Menu::GetHueB() * 36);
+        RGBColor hueFront = RGBColor(64, 0, 128); //.HueShift(Menu::GetHueF() * 36);
+        RGBColor hueBack  = RGBColor(0, 255, 255); //.HueShift(Menu::GetHueB() * 36);
 
         gradientSpectrum[0] = hueFront;
         gradientSpectrum[1] = hueBack;
@@ -217,8 +217,8 @@ protected:
 
         eEA.Update();
         
-        flowNoise.Update(ratio);
-        rainbowSpiral.Update(ratio);
+        flowNoise.Update(ratio / 100);
+        rainbowSpiral.Update(ratio / 100);
         materialAnimator.Update();
         backgroundMaterial.Update();
 
@@ -309,7 +309,7 @@ protected:
                 materialAnimator.AddMaterialFrame(blueMaterial, 0.8f);
                 break;
             case CRAINBOW:
-                materialAnimator.AddMaterialFrame(rainbowSpiral, 0.8f);
+                materialAnimator.AddMaterialFrame(gradientMat, 0.8f);
                 break;
             case CRAINBOWNOISE:
                 materialAnimator.AddMaterialFrame(flowNoise, 0.8f);
@@ -429,7 +429,7 @@ public:
     }
 
     void Initialize() override {
-        boop.Initialize(200);
+        boop.Initialize(5);
 
         hud.Initialize();
 

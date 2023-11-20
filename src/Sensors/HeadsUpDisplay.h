@@ -157,11 +157,13 @@ public:
         Wire.setSCL(19);
         #endif
 
-		Wire.beginTransmission(0x3C);
+		Wire.beginTransmission(0x3D);
 		uint8_t error = Wire.endTransmission();
 
 		if(error == 0){// SSD1306 Found
-			didBegin = display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+			didBegin = display.begin(SSD1306_SWITCHCAPVCC, 0x3D);
+
+			Serial.print("Started");
 
 			// Initialize the OLED display
 			if (!didBegin) {
@@ -177,6 +179,8 @@ public:
 		}
 		else {
 			didBegin = false;
+			Serial.printf("Failed %i\n", error);
+
 		}
 
 		startMillis = millis();
